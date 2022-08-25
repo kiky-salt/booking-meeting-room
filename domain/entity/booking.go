@@ -41,6 +41,25 @@ func NewBooking(employeId int, meetingRoom MeetingRoom, photoInvoice string, con
 	}, nil
 }
 
+func RebuildBooking(id int, employeId int, meetingRoomId int, photoInvoice string, contactPIC string,
+	startDatetime time.Time, endDatetime time.Time, status string, ratePerday int, ratePerHour int, discount int,
+	bookDate time.Time) *Booking {
+	return &Booking{
+		Id:            id,
+		EmployeeId:    employeId,
+		MeetingRoom:   MeetingRoom{},
+		PhotoInvoice:  photoInvoice,
+		ContactPIC:    contactPIC,
+		StartDatetime: startDatetime,
+		EndDatetime:   endDatetime,
+		Status:        status,
+		RatePerDay:    ratePerday,
+		RatePerHour:   ratePerHour,
+		discount:      discount,
+		BookDate:      bookDate,
+	}
+}
+
 func (b *Booking) GetStatus() string {
 	return b.Status
 }
